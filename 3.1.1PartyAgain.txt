@@ -1,0 +1,60 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void partyAgain(){
+    repeat(10){
+        pickBeeper();
+        turnLeft();
+        repeat(5){
+            moveForward();
+        }
+        //5 Steps
+        if(!frontIsClear()){
+            dropBeeper();
+            turnAround();
+            repeat(5){
+                moveForward();
+            }
+            backWalker();
+        }
+        else{
+            moveForward();
+            if(!frontIsClear()){
+                dropBeeper();
+                turnAround();
+                repeat(6){
+                    moveForward();
+                }
+                backWalker();
+            }
+            else{
+                moveForward();
+                dropBeeper();
+                turnAround();
+                repeat(7){
+                    moveForward();
+                }
+                backWalker();
+            }
+        }
+    }
+}
+
+void backWalker(){
+    turnLeft();
+    if(frontIsClear()){
+        moveForward();
+    }
+}

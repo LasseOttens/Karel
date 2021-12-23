@@ -1,0 +1,60 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void fetchTheStars(){
+    repeat(10){
+        turnLeft();
+        repeat(5){
+            moveForward();
+        }
+        //5 Steps
+        if(!frontIsClear()){
+            turnAround();
+            pickBeeper();
+            repeat(5){
+                moveForward();
+            }
+            backWalker();
+        }
+        else{
+            moveForward();
+            if(!frontIsClear()){
+                turnAround();
+                pickBeeper();
+                repeat(6){
+                    moveForward();
+                }
+                backWalker();
+            }
+            else{
+                moveForward();
+                turnAround();
+                pickBeeper();
+                repeat(7){
+                    moveForward();
+                }
+                backWalker();
+            }
+        }
+    }
+}
+
+void backWalker(){
+    turnLeft();
+    dropBeeper();
+    if(frontIsClear()){
+        moveForward();
+    }
+}
