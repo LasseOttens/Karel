@@ -1,0 +1,33 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void removeTheTiles(){
+    repeat(120){
+        tileRemover();
+    }
+}
+
+void tileRemover(){
+    if(onBeeper()){
+        pickBeeper();
+        if(beeperAhead()){
+            moveForward();
+        }
+        else{
+            turnLeft();
+            moveForward();
+        }
+    }
+}

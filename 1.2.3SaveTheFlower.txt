@@ -1,0 +1,44 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void saveTheFlower(){
+    moveForward();
+    pickBeeper();
+    repeat(4){
+        doubleStepUp();
+    }
+    dropBeeper();
+    turnRight();
+    repeat(4){
+        doubleStepDown();
+    }
+    turnLeft();
+}
+
+void doubleStepUp(){
+    turnLeft();
+    moveForward();
+    moveForward();
+    turnRight();
+    moveForward();
+}
+
+void doubleStepDown(){
+    turnLeft();
+    moveForward();
+    turnRight();
+    moveForward();
+    moveForward();
+}

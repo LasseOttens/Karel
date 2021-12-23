@@ -1,0 +1,52 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void harvestTheField(){
+    harvestLine();
+    turnTopSide();
+    harvestLine();
+    turnAround();
+    harvestLine();
+    turnTopSide();
+    harvestLine();
+}
+
+void turnTopSide(){
+    moveForward();
+    moveForward();
+    turnLeft();
+    moveForward();
+    moveForward();
+    turnLeft();
+}
+
+void harvestLine(){
+    repeat(4){
+        harvestFrontBeeper();
+        turnRight();
+        moveForward();
+        turnLeft(); 
+    }
+}
+
+void harvestFrontBeeper(){
+    if(beeperAhead()){
+        moveForward();
+        pickBeeper();
+    }
+    else{
+        moveForward();
+    }
+}

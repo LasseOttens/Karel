@@ -1,0 +1,48 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void mowTheLawn(){
+    repeat(2){
+        mowLine();
+        turnLeft();
+        moveForward();
+        turnLeft();
+        mowLine();
+        turnRight();
+        moveForward();
+        turnRight();
+    }
+    mowLine();
+    turnLeft();
+    moveForward();
+    turnLeft();
+    mowLine();
+}
+
+void mowLine(){
+    repeat(7){
+        mowForward();
+    }
+}
+
+void mowForward(){
+    if(onBeeper()){
+        pickBeeper();
+        moveForward();
+    }
+    else{
+        moveForward();
+    }
+}
