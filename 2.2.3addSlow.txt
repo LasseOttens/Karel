@@ -1,0 +1,73 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void addSlow(){
+    repeat(254){
+        decrement();
+        turnRight();
+        moveForward();
+        turnRight();
+        increment();
+        turnLeft();
+        moveForward();
+        turnLeft();
+    }
+}
+
+
+void increment(){
+    if(!onBeeper()){
+        dropBeeper();
+        backToWall();
+    }
+    else if(onBeeper()){
+        pickBeeper();
+        while(beeperAhead()){
+            moveForward();
+            pickBeeper();
+        }
+        moveForward();
+        dropBeeper();
+        backToWall();
+    }
+}
+
+void decrement(){
+    if(onBeeper()){
+        pickBeeper();
+        backToWall();
+    }
+    else{
+        dropBeeper();
+        while(!beeperAhead()){
+            if(frontIsClear()){
+                moveForward();  
+            }
+            if(!onBeeper()){
+                dropBeeper();   
+            }
+        }
+        moveForward();
+        pickBeeper();
+        backToWall();
+    }
+}
+
+void backToWall(){
+    turnAround();
+    while(frontIsClear()){
+        moveForward();
+    }
+}

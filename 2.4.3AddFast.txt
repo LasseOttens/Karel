@@ -1,0 +1,126 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+F7 = onBeeper();
+F8 = beeperAhead();
+F9 = leftIsClear();
+F10 = frontIsClear();
+F11 = rightIsClear();
+*/
+
+
+void addFast(){
+    repeat(8){
+        digitAdd();
+        turnAround();
+    }
+}
+
+void digitAdd(){
+    //Case 2,4,6,8
+    if(onBeeper()){
+        //Case 4,8
+        if(beeperAhead()){
+            moveForward();
+            //Case 4
+            if(!beeperAhead()){
+                doubleFor();
+                rightForward();
+                rightForward();
+                dropBeeper();
+                doubleFor();
+            }
+            //Case 8
+            else if(beeperAhead()){
+                doubleFor();
+                dropBeeper();
+                rightForward();
+                rightForward();
+                dropBeeper();
+                doubleFor();
+            }
+        }
+        //Case 2,6
+        else if(!beeperAhead()){
+            moveForward();
+            //Case 2
+            if(!beeperAhead()){
+                doubleFor();
+                dropBeeper();
+                rightForward();
+                turnRight();
+                Forward3();
+            }
+            //Case 6
+            else if(beeperAhead()){
+                doubleFor();
+                rightForward();
+                rightForward();
+                dropBeeper();
+                doubleFor();
+            }
+        } 
+    }
+    //Case 1,3,5,7
+    else if(!onBeeper()){
+        //Case 3,7
+        if(beeperAhead()){
+            moveForward();
+            //Case 3
+            if(!beeperAhead()){
+                doubleFor();
+                dropBeeper();
+                rightForward();
+                turnRight();
+                Forward3();
+            }
+            //Case 7
+            else if(beeperAhead()){
+                doubleFor();
+                rightForward();
+                rightForward();
+                dropBeeper();
+                doubleFor();
+            }
+        }
+        
+        //Case 1,5
+        else if(!beeperAhead()){
+            moveForward();
+            //Case 1
+            if(!beeperAhead()){
+                doubleFor();
+                rightForward();
+                turnRight();
+                Forward3();
+            }
+            //Case 5
+            if(beeperAhead()){
+                doubleFor();
+                dropBeeper();
+                rightForward();
+                turnRight();
+                Forward3();
+            }  
+        }
+    }
+}
+
+void doubleFor(){
+    moveForward();
+    moveForward();
+}
+void Forward3(){
+    repeat(3){
+        moveForward();
+    }
+}
+void rightForward(){
+    turnRight();
+    moveForward();
+}
+
